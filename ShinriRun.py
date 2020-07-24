@@ -52,6 +52,8 @@ def one_turn():
 	time.sleep(0.5)
 	one_turn()
 
+print('Welcome to Shinri Run!\n')
+
 one_turn()
 
 if how_gone[0]>how_gone[1] and how_gone[0]>how_gone[2] and how_gone[0]>how_gone[3]:
