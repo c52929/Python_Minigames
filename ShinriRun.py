@@ -7,7 +7,7 @@ go_steps=[0,0,0,0]
 players=['YOU:','com1','com2','com3']
 
 def ask():
-	check=input('How many steps do you run, 1, 3 or 5? : ')
+	check=input('How many steps do you walk, 1, 3 or 5? : ')
 	if(check in ['1','3','5']):
 		want_go[0]=int(check)
 	else:
