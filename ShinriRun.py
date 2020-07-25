@@ -1,6 +1,8 @@
 import random
 import time
 
+import functionsLists
+
 how_gone=[0,0,0,0]
 want_go=[0,0,0,0]
 go_steps=[0,0,0,0]
@@ -8,7 +10,8 @@ players=['YOU:','com1','com2','com3']
 
 def ask():
 	check=input('How many steps do you walk, 1, 3 or 5? : ')
-	if(check in ['1','3','5']):
+	functionsLists.exit_judge(check)
+	if check in ['1','3','5']:
 		want_go[0]=int(check)
 	else:
 		ask()
@@ -52,11 +55,15 @@ def one_turn():
 	time.sleep(0.5)
 	one_turn()
 
-print('Welcome to Shinri Run!\n')
+print('Welcome to Shinri Run!')
 
 one_turn()
 
 if how_gone[0]>how_gone[1] and how_gone[0]>how_gone[2] and how_gone[0]>how_gone[3]:
-	print('Congratulations! You win!\n')
+	if functionsLists.ask_try_again('Congratulations! You win!'):
+		how_gone=[0,0,0,0]
+		one_turn()
 else:
-	print('Finished! You lose.\n')
+	if functionsLists.ask_try_again('Finished! You lose.'):
+		how_gone=[0,0,0,0]
+		one_turn()
