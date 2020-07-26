@@ -13,7 +13,7 @@ def ask(message):
 		result[0]=hands_kind[hands_kind.index(result[0])%3]
 	else:
 		ask('Choose and type one of Rock(R, 1), Paper(P, 2) or Scissors(S, 3) : ')
-		return()
+		return
 	result[1]=hands_kind[random.randrange(3)]
 
 def turn(message):
@@ -24,12 +24,12 @@ def turn(message):
 	if hands_kind.index(result[0])==hands_kind.index(result[1]):
 		turn('Draw! Rock(R, 1), Paper(P, 2) or Scissors(S, 3)? : ')
 	elif hands_kind.index(result[0])-1==hands_kind.index(result[1]) or hands_kind.index(result[0])+2==hands_kind.index(result[1]):
-		if functionsLists.ask_try_again('You win!'):
+		if functionsLists.ask_try_again('You win!', True):
 			turn('Which do you show, Rock(R, 1), Paper(P, 2) or Scissors(S, 3)? : ')
 	else:
-		if functionsLists.ask_try_again('You lose.'):
+		if functionsLists.ask_try_again('You lose.', True):
 			turn('Which do you show, Rock(R, 1), Paper(P, 2) or Scissors(S, 3)? : ')
-	return()
+	return
 
 print('Welcome to Janken!')
 turn('Which do you show, Rock(R, 1), Paper(P, 2) or Scissors(S, 3)? : ')
