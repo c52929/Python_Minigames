@@ -2,7 +2,6 @@ import random
 import time
 import functionsLists
 import xlrd
-# import pprint
 
 words=xlrd.open_workbook('hangman_wordsdata/words_data.xlsx').sheet_by_index(1).col_values(0)
 # 本当は以下の手順を踏んでいる
@@ -30,7 +29,7 @@ def update_lives_gauge(lives):
 			lives_gauge+=' o'
 		else:
 			lives_gauge+=' x'
-	return lives_gauge+' ]'
+	return lives_gauge+' ]('+str(lives)+'/6)'
 
 def update_secret_word():
 	info='['
@@ -40,6 +39,13 @@ def update_secret_word():
 		else:
 			info+=' _'
 	return info+' ]'
+
+def hasnt_been_guessed():
+	hasnt_been_guessed='['
+	for i in range(26):
+		if not(alphabets[i] in guesses):
+			hasnt_been_guessed+=' '+alphabets[i]
+	return hasnt_been_guessed+' ]'
 
 def ask(message):
 	new_guess=input(message).upper()
@@ -58,6 +64,9 @@ def ask(message):
 				lives-=1
 			time.sleep(0.4)
 			print('Lives:'+update_lives_gauge(lives)+' Secret Word:'+update_secret_word()+'\n')
+	elif new_guess.lower()=='list':
+		time.sleep(0.5)
+		print("Not guessed yet:"+hasnt_been_guessed()+'\n')
 	else:
 		ask('Answer with an alphabet letter: ')
 
@@ -70,7 +79,7 @@ def turn():
 			info+=update_secret_word()[i]
 	time.sleep(0.8)
 	if info==correct:
-		print('Congratulations! You hit the word!\n')
+		print("The answer was '"+correct+"'. Congratulations!\n")
 	elif lives<1:
 		if functionsLists.ask_try_again('You lost lives...', False):
 			lives=6
