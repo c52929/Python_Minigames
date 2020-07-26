@@ -22,6 +22,8 @@ correct=words[random.randrange(len(words))].upper()
 for i in range(len(correct)):
 	correct_list.append(correct[i])
 
+already=[0,4]
+
 def update_lives_gauge(lives):
 	lives_gauge='['
 	for i in range(6):
@@ -40,19 +42,28 @@ def update_secret_word():
 			info+=' _'
 	return info+' ]'
 
-def hasnt_been_guessed():
-	hasnt_been_guessed='['
+def havent_been_guessed():
+	havent_been_guessed='['
 	for i in range(26):
 		if not(alphabets[i] in guesses):
-			hasnt_been_guessed+=' '+alphabets[i]
-	return hasnt_been_guessed+' ]'
+			havent_been_guessed+=' '+alphabets[i]
+	return havent_been_guessed+' ]'
 
 def ask(message):
+	global already
 	new_guess=input(message).upper()
 	functionsLists.exit_judge(new_guess)
 	if new_guess in guesses:
+		if already[0]>already[1]:
+			time.sleep(0.5)
+			print('<i> Hint: You can know the letters you have not guessed yet with typing "list".')
+			already=[0, already[1]+1]
+			if already[1]>10:
+				already[1]=10
+			time.sleep(0.8)
+		already[0]+=1
 		ask("You have already guessed '"+new_guess+"'. Guess again: ")
-		return()
+		return
 	elif new_guess in alphabets:
 			guesses.append(new_guess)
 			time.sleep(0.4)
@@ -65,8 +76,9 @@ def ask(message):
 			time.sleep(0.4)
 			print('Lives:'+update_lives_gauge(lives)+' Secret Word:'+update_secret_word()+'\n')
 	elif new_guess.lower()=='list':
+		already[0]=0
 		time.sleep(0.5)
-		print("Not guessed yet:"+hasnt_been_guessed()+'\n')
+		print("Not guessed yet:"+havent_been_guessed()+'\n')
 	else:
 		ask('Answer with an alphabet letter: ')
 
@@ -89,7 +101,7 @@ def turn():
 			print("The answer was '"+correct+"'. See you...\n")
 	else:
 		turn()
-		return()
+		return
 
 print('Lives:'+update_lives_gauge(lives)+' Secret Word:'+update_secret_word())
 turn()
