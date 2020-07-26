@@ -10,16 +10,17 @@ def exit_judge(answer):
 
 def ask_try_again(message,exitTorF):
 	try_again=input(message+' Try again? Y/N: ')
+	# print(try_again)
+	# print(try_again.lower() in answer_yes)
 	exit_judge(try_again)
 	if try_again.lower() in answer_yes:
 		print()
-		return(True)
+		return True
 	elif try_again.lower() in answer_no:
 		if exitTorF:
 			print('See you...\n')
 			exit()
 		else:
-			return
+			return False
 	else:
-		ask_try_again('Answer Y or N.',exitTorF)
-		return
+		return ask_try_again('Answer Y or N.',exitTorF)
