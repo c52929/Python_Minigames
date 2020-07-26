@@ -1,5 +1,5 @@
 # Python_Minigames
-This is my first python project. As practice of coding with python, I try making simple minigames. In my games, you will be asked about your actions. When you are asked about something, you can quit the game with answering "end", "exit", or "quit" any time.
+This is my first python project. As practice of coding with python, I try making simple minigames. In my games, you will be asked about your actions. When you are asked about something, you can quit the game with answering "end", "exit" or "quit" any time.
 
 Shinri Run: 
 	4 players, which means you and 3 coms, run toward a goal placed 20 steps ahead from starting point.
@@ -8,3 +8,8 @@ Shinri Run:
 
 Janken: 
 	You and com fight with showing each hand as a rock, as a piece of paper or as scissors. Rock is stronger than scissors, scissors are stronger than paper, and paper is stronger than rock. If you and com show the same, you will have one more chance to fight.
+
+Hang Man game: 
+	There is a secret word chosen from more than 10,000 words in a random manner. (Words are in hangman_wordsdata\words_data.xlsx) Hit the word with guessing letters one by one included in the word.
+	You have 6 lives at first. When you miss to guess, you lose 1 life. Even if you lose all the lives, you can continue the game with answering "Y" or "Yes" for this question:"Try again?" 
+	When you forget the letters you have not guessed yet, you can know them with typing "list".
