@@ -15,7 +15,7 @@ def ask():
 		want_go[0]=int(check)
 	else:
 		ask()
-		return()
+		return
 	for i in range(3):
 		want_go[i+1]=random.randrange(1,6,2)
 
@@ -50,7 +50,7 @@ def one_turn():
 	
 	for i in range(4):
 		if how_gone[i]>=20:
-			return()
+			return
 	
 	time.sleep(0.5)
 	one_turn()
@@ -60,10 +60,10 @@ print('Welcome to Shinri Run!')
 one_turn()
 
 if how_gone[0]>how_gone[1] and how_gone[0]>how_gone[2] and how_gone[0]>how_gone[3]:
-	if functionsLists.ask_try_again('Congratulations! You win!'):
+	if functionsLists.ask_try_again('Congratulations! You win!', True):
 		how_gone=[0,0,0,0]
 		one_turn()
 else:
-	if functionsLists.ask_try_again('Finished! You lose.'):
+	if functionsLists.ask_try_again('Finished! You lose.', True):
 		how_gone=[0,0,0,0]
 		one_turn()
