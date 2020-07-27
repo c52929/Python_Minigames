@@ -13,3 +13,4 @@ Hang Man game:
 	There is a secret word chosen from more than 10,000 words in a random manner. (Words are in hangman_wordsdata\words_data.xlsx) Hit the word with guessing letters one by one included in the word.
 	You have 6 lives at first. When you miss to guess, you lose 1 life. Even if you lose all the lives, you can continue the game with answering "Y" or "Yes" for this question:"Try again?" 
 	When you forget the letters you have not guessed yet, you can know them with typing "list".
+	* To play this game, you need xlrd library. Download it before playing this game. Type following code into Command prompt and press Enter key: pip install xlrd 
