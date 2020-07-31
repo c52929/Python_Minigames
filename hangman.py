@@ -28,9 +28,9 @@ def update_lives_gauge(lives):
 	lives_gauge='['
 	for i in range(6):
 		if i<lives:
-			lives_gauge+=' o'
+			lives_gauge+=' ♡'
 		else:
-			lives_gauge+=' x'
+			lives_gauge+=' ×'
 	return lives_gauge+' ]('+str(lives)+'/6)'
 
 def update_secret_word():
@@ -74,7 +74,7 @@ def ask(message):
 				global lives
 				lives-=1
 			time.sleep(0.4)
-			print('Lives:'+update_lives_gauge(lives)+' Secret Word:'+update_secret_word()+'\n')
+			print('Secret Word:'+update_secret_word()+' Lives:'+update_lives_gauge(lives)+'\n')
 	elif new_guess.lower()=='list':
 		already[0]=0
 		time.sleep(0.5)
@@ -95,7 +95,7 @@ def turn():
 	elif lives<1:
 		if functionsLists.ask_try_again('You lost lives...', False):
 			lives=6
-			print('Lives:'+update_lives_gauge(lives)+' Secret Word:'+update_secret_word())
+			print('Secret Word:'+update_secret_word()+' Lives:'+update_lives_gauge(lives))
 			turn()
 		else:
 			print("The answer was '"+correct+"'. See you...\n")
@@ -103,5 +103,5 @@ def turn():
 		turn()
 		return
 
-print('Lives:'+update_lives_gauge(lives)+' Secret Word:'+update_secret_word())
+print('Secret Word:'+update_secret_word()+' Lives:'+update_lives_gauge(lives))
 turn()
